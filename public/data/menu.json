@@ -1,0 +1,124 @@
+{
+    "menu": [
+        {
+            "url": "#",
+            "name": "الصفحة الرئيسية",
+            "slug": "home",
+            "icon": "bx-home-circle",
+            "tag": "2",
+            "tagcustom": "badge badge-light-danger badge-pill badge-round float-right mr-50",
+            "submenu": [
+                {
+                    "url": "/home",
+                    "name": "لوحة التحكم",
+                    "slug": "dashboard-ecommerce",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "الطلبات",
+            "slug": "invoice",
+            "icon": "bx-layout",
+            "submenu": [
+                {
+                    "url": "app/invoice/list",
+                    "name": "إدارة الطلبات",
+                    "slug": "app-invoice-list",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "الفواتير",
+            "slug": "invoice",
+            "icon": "bx-layout",
+            "submenu": [
+                {
+                    "url": "app/invoice/list",
+                    "name": "إدارة الفواتير",
+                    "slug": "app-invoice-list",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "المنتجات",
+            "slug": "products",
+            "icon": "bx-layout",
+            "submenu": [
+                {
+                    "url": "products",
+                    "name": "إدارة المنتجات",
+                    "slug": "products-management",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "المخازن",
+            "slug": "stores",
+            "icon": "bx-layout",
+            "submenu": [
+                {
+                    "url": "stores",
+                    "name": "إدارة المخازن",
+                    "slug": "stores-management",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "المستخدمين",
+            "slug": "users",
+            "icon": "bx-layout",
+            "submenu": [
+                {
+                    "url": "users",
+                    "name": "إدارة المستخدمين",
+                    "slug": "app-invoice-list",
+                    "icon": "bx bx-right-arrow-alt"
+                },
+                {
+                    "url": "roles",
+                    "name": "الادوار",
+                    "slug": "app-invoice-list",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "الاشعارات",
+            "slug": "invoice",
+            "icon": "bx-layout",
+            "submenu": [
+                {
+                    "url": "app/invoice/list",
+                    "name": "إدارة الاشعارات",
+                    "slug": "app-invoice-list",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        },
+        {
+            "url": "#",
+            "name": "العروض",
+            "slug": "invoice",
+            "icon": "bx-layout",
+            "submenu": [
+                {
+                    "url": "app/invoice/list",
+                    "name": "إدارة العروض",
+                    "slug": "app-invoice-list",
+                    "icon": "bx bx-right-arrow-alt"
+                }
+            ]
+        }
+    ]
+}

@@ -1,53 +1,9 @@
-@extends('admin.master')
-
-@push('title')
-    Create Role
-@endpush
-
-
-@section('breadcrumb')
-    <div class="secondary-nav">
-        <div class="breadcrumbs-container" data-page-heading="Analytics">
-            <header class="header navbar navbar-expand-sm">
-                <a href="javascript:void(0);" class="btn-toggle sidebarCollapse" data-placement="bottom">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round" class="feather feather-menu">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </a>
-                <div class="d-flex breadcrumb-content">
-                    <div class="page-header">
-
-                        <div class="page-title">
-                        </div>
-
-                        <nav class="breadcrumb-style-one" aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{{route('admin.index')}}">Dashboard</a>
-                                </li>
-                                <li class="breadcrumb-item" aria-current="page">
-                                    <a href="{{route('admin.role.index')}}">Role</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">Add Role</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-
-            </header>
-        </div>
-    </div>
-    <!--  END BREADCRUMBS  -->
-@endsection
+@extends('layouts.contentLayoutMaster')
 
 @section('content')
     <div class="row my-3">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="margin-bottom:24px;">
-            <form method="POST" action="{{ route('admin.role.store') }}">
+            <form method="POST" action="{{ route('roles.store') }}">
                 @csrf
                 <div class="card">
                     <div class="card-header">
@@ -86,16 +42,15 @@
                                             <thead>
                                             <tr>
                                                 <th scope="col">Table</th>
-                                                <th scope="col">List</th>
-                                                <th class="text-center" scope="col">create</th>
-                                                <th class="text-center" scope="col">show</th>
-                                                <th class="text-center" scope="col">update</th>
-                                                <th class="text-center" scope="col">delete</th>
+                                                <th scope="col">عرض الكل </th>
+                                                <th class="text-center" scope="col">انشاء</th>
+                                                <th class="text-center" scope="col">اظهار</th>
+                                                <th class="text-center" scope="col">تحديث</th>
+                                                <th class="text-center" scope="col">حذف</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             @foreach($tables as $table)
-
                                                 <tr>
                                                     <td class="d-flex">
                                                         <div
@@ -117,8 +72,8 @@
                                                                    type="checkbox"
                                                                    onchange="changeCheckAllButtonStatus('{{$table}}')"
                                                                    data-permission="permission_{{$table}}"
-                                                                   name="permissions[list-{{$table}}]"
-                                                                @checked(old('permissions') !== null &&  array_key_exists('list-' . $table ,old('permissions')))>
+                                                                   name="permissions[عرض الكل-{{$table}}]"
+                                                                @checked(old('permissions') !== null &&  array_key_exists('عرض الكل-' . $table ,old('permissions')))>
 
 
                                                         </div>
@@ -129,8 +84,8 @@
                                                                    type="checkbox"
                                                                    onchange="changeCheckAllButtonStatus('{{$table}}')"
                                                                    data-permission="permission_{{$table}}"
-                                                                   name="permissions[create-{{$table}}]"
-                                                                @checked(old('permissions') !== null &&  array_key_exists('create-' . $table ,old('permissions')))>
+                                                                   name="permissions[انشاء-{{$table}}]"
+                                                                @checked(old('permissions') !== null &&  array_key_exists('انشاء-' . $table ,old('permissions')))>
 
                                                         </div>
                                                     </td>
@@ -141,8 +96,8 @@
                                                                    type="checkbox"
                                                                    onchange="changeCheckAllButtonStatus('{{$table}}')"
                                                                    data-permission="permission_{{$table}}"
-                                                                   name="permissions[show-{{$table}}]"
-                                                                @checked(old('permissions') !== null &&  array_key_exists('show-' . $table ,old('permissions')))>
+                                                                   name="permissions[اظهار-{{$table}}]"
+                                                                @checked(old('permissions') !== null &&  array_key_exists('اظهار-' . $table ,old('permissions')))>
 
                                                         </div>
                                                     </td>
@@ -153,8 +108,8 @@
                                                                    type="checkbox"
                                                                    onchange="changeCheckAllButtonStatus('{{$table}}')"
                                                                    data-permission="permission_{{$table}}"
-                                                                   name="permissions[update-{{$table}}]"
-                                                                @checked(old('permissions') !== null &&  array_key_exists('update-' . $table ,old('permissions')))>
+                                                                   name="permissions[تحديث-{{$table}}]"
+                                                                @checked(old('permissions') !== null &&  array_key_exists('تحديث-' . $table ,old('permissions')))>
 
                                                         </div>
                                                     </td>
@@ -165,8 +120,8 @@
                                                                    type="checkbox"
                                                                    onchange="changeCheckAllButtonStatus('{{$table}}')"
                                                                    data-permission="permission_{{$table}}"
-                                                                   name="permissions[delete-{{$table}}]"
-                                                                @checked(old('permissions') !== null &&  array_key_exists('delete-' . $table ,old('permissions')))>
+                                                                   name="permissions[حذف-{{$table}}]"
+                                                                @checked(old('permissions') !== null &&  array_key_exists('حذف-' . $table ,old('permissions')))>
                                                         </div>
                                                     </td>
 
@@ -190,7 +145,8 @@
     </div>
 @endsection
 
-@push('js')
+@push('scripts')
+
     <script>
 
         $('.checkAll').on('change', function () {
@@ -222,3 +178,5 @@
         }
     </script>
 @endpush
+
+

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables;
+namespace app\DataTables;
 
 use App\Traits\DatatableTrait;
 use App\Models\Role;
@@ -55,9 +55,7 @@ class RoleDataTable extends DataTable
                 'order' => [
                     [0, 'desc']
                 ],
-                "fnDrawCallback" => "function( oSettings ) {
-                    btnDelete()
-                }",
+
             ]);
     }
 

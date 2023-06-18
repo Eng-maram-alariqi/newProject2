@@ -1,4 +1,6 @@
 @extends('layouts.contentLayoutMaster')
+
+@push('styles')
     <link rel="stylesheet"
           type="text/css"
           href="{{ asset('adminAssets/src/plugins/src/table/datatable/datatables.css') }}">
@@ -6,9 +8,10 @@
     <link rel="stylesheet"
           type="text/css"
           href="{{asset('adminAssets/src/plugins/css/light/table/datatable/custom_dt_miscellaneous.css')}}">
+@endpush
 
-    
-          @section('content')
+
+@section('content')
 
     <div class="row layout-spacing my-4">
         <div class="col-lg-12">
@@ -17,7 +20,7 @@
                     <h3 class="text-capitalize text-dark">
                         الادوار
                     </h3>
-                    
+
                         <a href="{{route('roles.create')}}" class="icon text-dark">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
                                  fill="none"
@@ -29,33 +32,27 @@
                                 <line x1="23" y1="11" x2="17" y2="11"></line>
                             </svg>
                         </a>
-                  
+
                 </div>
                 <div class="card-body">
                     {!! $dataTable->table(['class' => 'table table-striped dt-table-hover dataTable text-center' ,'id' => 'DataTable']) !!}
-                   
+
                 </div>
             </div>
         </div>
     </div>
 @endsection
 
-
-    <script src="{{ asset('adminAssets/src/plugins/src/global/vendors.min.js') }}"></script>
-
-    <script src="{{ asset('adminAssets/src/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <script src="{{ asset('adminAssets/src/plugins/src/jquery/jquery-3.6.3.js') }}"></script>
-
+@push('scripts')
 
     {{--Begin Data_Table--}}
     <script src="{{ asset('adminAssets/src/plugins/src/table/datatable/datatables.js') }}"></script>
     <script src="{{ asset('adminAssets/src/plugins/src/table/datatable/button-ext/dataTables.buttons.min.js') }}">
     </script>
     <script src="{{ asset('adminAssets/src/plugins/src/table/datatable/custom_miscellaneous.js') }}"></script>
-    <script src="{{ asset('js/adminAssets/button-confirmation-datatable.js') }}?v=123"></script>
+{{--    <script src="{{ asset('js/adminAssets/button-confirmation-datatable.js') }}?v=123"></script>--}}
+
     {!! $dataTable->scripts() !!}
     {{--End Data_Table--}}
-    
 
-
+@endpush

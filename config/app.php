@@ -187,6 +187,7 @@ return [
         /*
          * Package Service Providers...
          */
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -216,6 +217,8 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
+
     ])->toArray(),
 
 ];

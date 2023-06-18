@@ -43,7 +43,7 @@ class PermissionSeeder extends Seeder
     public function initializedDataToInsertIntoPermissionTable(): array
     {
         $data = [];
-        foreach ($this->getTablesNames() as $tableName) {
+        foreach (getTablesName() as $tableName) {
             foreach ($this->getAllCrudOperations($tableName) as $action) {
                 $data [] = $action;
             }
@@ -62,26 +62,5 @@ class PermissionSeeder extends Seeder
         }
         return $crudOperations;
     }
-
-
-    public function getTablesNames()
-    {
-        return [
-            'التقارير',
-            'المستخدمين',
-           
-            'المدن',
-            'المخازن',
-            'الصور',
-            'الطلبات',
-            'الصلاحيات',
-            'العملاء',
-            'فئات المنتجات',
-            'المنتجات',
-            'عناوين العملاء',
-            'العناوين', 
-        ];
-    }
-
 
 }

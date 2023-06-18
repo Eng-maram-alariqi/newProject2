@@ -16,21 +16,32 @@ class CreateAdminUserSeeder extends Seeder
 * @return void
 */
 public function run()
-{
-    $user = User::create([
-        'username' => ' safa ',
-        'email' => 'safa@yahoo.com',
-        'password' => bcrypt('123456'), 
-        'phone_number' => '888888888',
-        'status' => "active",
-       
-        ]);
+    {
+        $this->call(PermissionSeeder::class);
 
-$role = Role::create(['name' => 'admin']);
-$permissions = Permission::pluck('id','id')->all();
-$role->syncPermissions($permissions);
-$user->assignRole([$role->id]);
-}
+        $superAdmin1 = User::updateOrCreate(
+            [
+                'email' => 'safa@yahoo.com',
+            ],
+            [
+                'username' => ' safa ',
+                'password' => bcrypt('123456'),
+                'phone_number' => '888888888',
+                'status' => "active",
+            ]);
+
+
+        $superAdminRole = Role::updateOrCreate(['name' => 'Owner'],
+            [
+                'guard_name' => 'web'
+            ]);
+
+        $allPermissions = Permission::all();
+
+        $superAdminRole->syncPermissions($allPermissions);
+
+        $superAdmin1->assignRole($superAdminRole);
+        }
 }
 
 //php artisan db:seed --class=CreateAdminUserSeeder

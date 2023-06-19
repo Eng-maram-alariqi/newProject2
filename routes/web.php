@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::resource('users', UserController::class);
     Route::resource('offers', OfferController::class);
     Route::resource('permissions', PermissionsController::class);
+    Route::resource('users', UserController::class);
    
 });
 
@@ -52,16 +53,18 @@ Route::get('/stores', function () {
     return view('stores.view');
 })->name('stores.view');
 
-Route::get('/users', function () {
-    return view('users.show_user');
-})->name('users.show_user');
-Route::get('/roles', function () {
-    return view('roles.index');
-})->name('roles.index');
+// Route::get('/users', function () {
+//     return view('users.show_user');
+// })->name('users.show_user');
+
+// Route::get('/roles', function () {
+//     return view('roles.index');
+// })->name('roles.index');
 
 Route::get('/add-product', function () {
     return view('products.add');
 })->name('products.add');
+
 
 
 
@@ -73,7 +76,6 @@ Route::get('/add-product', function () {
         Route::post('store', [RoleController::class, 'store'])->name('store');
         Route::get('edit/{role}', [RoleController::class, 'edit'])->name('edit');
         Route::put('update/{role}', [RoleController::class, 'update'])->name('update');
-        Route::post('delete/{role}', [RoleController::class, 'delete'])->name('delete');
-        Route::post('getRoleDetailsAjax', [RoleController::class, 'getRoleDetailsAjax'])->name('getRoleDetailsAjax');
+        Route::delete('delete/{role}', [RoleController::class, 'delete'])->name('delete');
 
     });

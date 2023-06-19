@@ -22,7 +22,6 @@ class UserController extends Controller
     {
         //
         $user = User::with('roles')->orderBy('id', 'desc')->get();
-
         $user = $user->reverse();
         return DataTables::of($user)
             ->addColumn('roles', function ($user) {
@@ -40,7 +39,8 @@ class UserController extends Controller
     public function create()
     {
         //
-        $roles = Role::pluck('name','name')->all();
+        $roles = Role::select('id', 'name')->get();
+    
         return view('users.add_user',compact('roles'));
         
     }

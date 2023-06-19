@@ -70,7 +70,6 @@ class RoleController extends Controller
     public function edit(Role  $role)
     {
         $tables = getTablesName();
-//        dd($role);
         return view('roles.role.edit', compact('role', 'tables'));
     }
 

@@ -18,6 +18,7 @@ if (!function_exists('getTablesName')) {
             'المنتجات',
             'عناوين_العملاء',
             'العناوين',
+            
         ];
     }
 

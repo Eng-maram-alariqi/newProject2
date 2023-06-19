@@ -34,7 +34,6 @@ Route::put('products/{product}/changeStatus', [ProductController::class, 'change
 
 Route::resource('categories', ProductCategoryController::class);
 Route::resource('stores', StoreController::class);
-Route::resource('roles',RoleController::class);
-Route::resource('users', UserController::class);
+// Route::resource('roles',RoleController::class);
 Route::resource('orders', OrderController::class);
 

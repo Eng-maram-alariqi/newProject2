@@ -4,7 +4,7 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <form class="pt-0" id="addNewUserForm"  onsubmit="return false" method="post">
+        <form class="pt-0" id="addNewUserForm" onsubmit="return false" method="post">
             <div class="mb-3">
                 <label class="form-label" for="add-product-name">اسم المستخدم</label>
                 <input type="text" class="form-control" id="username" name="username"/>
@@ -34,15 +34,6 @@
         
 
 
-            <div class="col-md-12">
-                            <label class="form-label">الادوار</label>
-                            <select name="roles" id="select-beast" class="form-control  nice-select  custom-select">
-                                @foreach($roles as $role)
-                                    <option value="{{$role->id}}">{{$role->name}}</option>
-                                @endforeach
-                            </select>
-            </div>
-
 
             <div class="col-md-12">
                             <label class="form-label">حالة المستخدم</label>
@@ -50,7 +41,7 @@
                                 <option value="active">active</option>
                                 <option value="inactive">inactive</option>
                             </select>
-            </div>
+                        </div>
 
                 
 </br>
@@ -79,3 +70,4 @@
 
 
 
+<?php /**PATH E:\am\newProject2\resources\views/users/add_user.blade.php ENDPATH**/ ?>

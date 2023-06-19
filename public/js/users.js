@@ -199,17 +199,13 @@ function addUser() {
         },
         submitHandler: function (form) {
             var formData = new FormData(form);
-            var fileInput = $('#product_image')[0];
-            var file = fileInput.files[0];
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
+          
+           
             reader.onload = function () {
-                var base64Image = reader.result;
-                var cleanedBase64Image = base64Image.split(',')[1]; // remove metadata from base64
-                formData.append('image', cleanedBase64Image);
+        
                 // make the API request using $.ajax()
                 $.ajax({
-                    url: '/api/users',
+                    url: '/users',
                     method: 'POST',
                     data: formData,
                     processData: false,
@@ -225,9 +221,11 @@ function addUser() {
                         console.log(xhr.responseText);
                     }
                 });
-            };
+         
         }
+    }
     });
+    
 }
 
 function editProduct() {

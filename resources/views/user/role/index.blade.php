@@ -18,10 +18,10 @@
             <div class="card ">
                 <div class="card-header d-flex justify-content-between align-items-center ">
                     <h3 class="text-capitalize text-dark">
-                        الادوار
+                        المستخدمين
                     </h3>
 
-                        <a href="{{route('roles.create')}}" class="icon text-dark">
+                        <a href="{{route('users.create')}}" class="icon text-dark">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
                                  fill="none"
                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

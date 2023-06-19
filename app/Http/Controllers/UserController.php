@@ -27,9 +27,6 @@ class UserController extends Controller
             ->addColumn('roles', function ($user) {
                 return $user->roles->pluck('name')->implode(', ');
             })->toJson();
-
-
-
             
     }
 

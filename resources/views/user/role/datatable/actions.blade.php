@@ -1,9 +1,5 @@
 <div class="d-flex justify-content-center align-items-center text-center">
-  
-
-
-   
-        <a href="<?php echo e(route('roles.edit',$query->id)); ?>"
+        <a href="{{route('roles.edit',$query->id)}}"
            class="btn btn-success text-start  mx-1 mb-0"
            title="Show"
            style="border: none;">
@@ -16,10 +12,12 @@
             </svg>
         </a>
 
+    <form action="{{route('roles.delete', $query->id)}}" method="post" >
+        @csrf
+        @method('delete')
 
-
-        <a href="javascript:void(0)" data-url="<?php echo e(route('roles.delete', $query->id)); ?>" type="submit"
-           class="btn btn-danger text-start btn_delete" style="border: none;">
+        <button type="submit"
+           class="btn btn-danger text-start" style="border: none;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                  class="feather feather-trash-2">
@@ -28,8 +26,8 @@
                 <line x1="10" y1="11" x2="10" y2="17"></line>
                 <line x1="14" y1="11" x2="14" y2="17"></line>
             </svg>
-        </a>
+        </button>
+    </form>
 
 
 </div>
-<?php /**PATH E:\am\newProject2\resources\views/roles/role/datatable/actions.blade.php ENDPATH**/ ?>

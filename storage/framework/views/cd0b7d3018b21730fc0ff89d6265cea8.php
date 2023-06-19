@@ -39,7 +39,9 @@
                 </div>
             </div>
         </div>
+        
     </div>
+    <div class="content-backdrop fade"></div>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('scripts'); ?>

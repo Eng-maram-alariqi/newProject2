@@ -40,7 +40,32 @@ Route::group(['middleware' => ['auth']], function() {
     // Route::resource('users', UserController::class);
     Route::resource('offers', OfferController::class);
     Route::resource('permissions', PermissionsController::class);
-    Route::resource('users', UserController::class);
+    // Route::resource('users', UserController::class);
+
+
+
+  /*-------------------------- users Routes  ---------------------------*/
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::get('create', [UserController::class, 'create'])->name('create');
+        Route::post('store', [UserController::class, 'store'])->name('store');
+        Route::get('edit/{user}', [UserController::class, 'edit'])->name('edit');
+        Route::put('update/{user}', [UserController::class, 'update'])->name('update');
+        Route::delete('delete/{user}', [UserController::class, 'delete'])->name('delete');
+    
+    });
+    
+
+        /*-------------------------- Roles Routes  ---------------------------*/
+        Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
+            Route::get('/', [RoleController::class, 'index'])->name('index');
+            Route::get('create', [RoleController::class, 'create'])->name('create');
+            Route::post('store', [RoleController::class, 'store'])->name('store');
+            Route::get('edit/{role}', [RoleController::class, 'edit'])->name('edit');
+            Route::put('update/{role}', [RoleController::class, 'update'])->name('update');
+            Route::delete('delete/{role}', [RoleController::class, 'delete'])->name('delete');
+    
+        });
    
 });
 
@@ -67,15 +92,3 @@ Route::get('/add-product', function () {
 
 
 
-
-
-    /*-------------------------- Roles Routes  ---------------------------*/
-    Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
-        Route::get('/', [RoleController::class, 'index'])->name('index');
-        Route::get('create', [RoleController::class, 'create'])->name('create');
-        Route::post('store', [RoleController::class, 'store'])->name('store');
-        Route::get('edit/{role}', [RoleController::class, 'edit'])->name('edit');
-        Route::put('update/{role}', [RoleController::class, 'update'])->name('update');
-        Route::delete('delete/{role}', [RoleController::class, 'delete'])->name('delete');
-
-    });

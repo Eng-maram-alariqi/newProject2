@@ -1,10 +1,11 @@
+@php use App\Helpers\Helper; @endphp
 {{-- pageConfigs variable pass to Helper's updatePageConfig function to update page configuration  --}}
 @isset($pageConfigs)
 {!! Helper::updatePageConfig($pageConfigs) !!}
 @endisset
 @php
     // confiData variable layoutClasses array in Helper.php file.
-      $configData = \App\Helpers\Helper::applClasses();
+      $configData = Helper::applClasses();
 @endphp
 
 

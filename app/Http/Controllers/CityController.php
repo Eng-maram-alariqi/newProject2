@@ -9,6 +9,11 @@ class CityController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware('permission:عرض الكل-المدن|انشاء-المدن|اظهار-المدن|تحديث-المدن|حذف-المدن');
+    }
+
     public function index()
     {
         //

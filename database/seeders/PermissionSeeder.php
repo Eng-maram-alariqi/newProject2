@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\PermissionRegistrar;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PermissionSeeder extends Seeder
 {
@@ -25,7 +24,10 @@ class PermissionSeeder extends Seeder
 
 
         $this->insertDataToPermissionTable();
+        $this->createCustomPermissions();
+        
     }
+
     public function insertDataToPermissionTable()
     {
         foreach ($this->initializedDataToInsertIntoPermissionTable() as $permissionName) {
@@ -63,4 +65,12 @@ class PermissionSeeder extends Seeder
         return $crudOperations;
     }
 
+
+    public function createCustomPermissions()
+    {
+        Permission::insertOrIgnore([
+            ['name' => 'عرض الكل-لوحة_التحكم', 'guard_name' => 'web'],
+
+        ]);
+    }
 }

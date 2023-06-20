@@ -1,6 +1,7 @@
 <div class="d-flex justify-content-center align-items-center text-center">
-    @if( auth()->user()->can('تحديث-الادوار') )
-        <a href="{{route('roles.edit',$query->id)}}"
+    @if( auth()->user()->can('تحديث-المستخدمين') )
+
+        <a href="{{route('users.edit',$query->id)}}"
            class="btn btn-success text-start  mx-1 mb-0"
            title="Show"
            style="border: none;">
@@ -13,9 +14,9 @@
             </svg>
         </a>
     @endif
-    @if( auth()->user()->can('حذف-الادوار') )
+    @if( auth()->user()->can('حذف-المستخدمين') )
 
-        <form action="{{route('roles.delete', $query->id)}}" method="post">
+        <form action="{{route('users.delete', $query->id)}}" method="post">
             @csrf
             @method('delete')
 

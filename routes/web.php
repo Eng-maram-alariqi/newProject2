@@ -1,50 +1,25 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-
-// dashboard Routes
-// Route::get('/', [DashboardController::class, 'dashboardEcommerce'])->name('dashboard-ecommerce')->middleware('verified');
 
 Route::get('/', function () {
     return view('auth/login');
-}); 
-
-Route::get('/home', function () {
-    return view('dashboard.view');
-})->name('dashboard.view');
-
+});
 
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::group(['middleware' => ['auth']], function() {
-    // Route::resource('roles',RoleController::class);
-    // Route::resource('users', UserController::class);
-    Route::resource('offers', OfferController::class);
-    Route::resource('permissions', PermissionsController::class);
-    // Route::resource('users', UserController::class);
+Route::group(['middleware' => ['auth']], function () {
 
-
-
-  /*-------------------------- users Routes  ---------------------------*/
+    /*-------------------------- users Routes  ---------------------------*/
     Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::get('create', [UserController::class, 'create'])->name('create');
@@ -52,21 +27,21 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('edit/{user}', [UserController::class, 'edit'])->name('edit');
         Route::put('update/{user}', [UserController::class, 'update'])->name('update');
         Route::delete('delete/{user}', [UserController::class, 'delete'])->name('delete');
-    
-    });
-    
 
-        /*-------------------------- Roles Routes  ---------------------------*/
-        Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
-            Route::get('/', [RoleController::class, 'index'])->name('index');
-            Route::get('create', [RoleController::class, 'create'])->name('create');
-            Route::post('store', [RoleController::class, 'store'])->name('store');
-            Route::get('edit/{role}', [RoleController::class, 'edit'])->name('edit');
-            Route::put('update/{role}', [RoleController::class, 'update'])->name('update');
-            Route::delete('delete/{role}', [RoleController::class, 'delete'])->name('delete');
-    
-        });
-   
+    });
+
+
+    /*-------------------------- Roles Routes  ---------------------------*/
+    Route::group(['prefix' => 'roles', 'as' => 'roles.'], function () {
+        Route::get('/', [RoleController::class, 'index'])->name('index');
+        Route::get('create', [RoleController::class, 'create'])->name('create');
+        Route::post('store', [RoleController::class, 'store'])->name('store');
+        Route::get('edit/{role}', [RoleController::class, 'edit'])->name('edit');
+        Route::put('update/{role}', [RoleController::class, 'update'])->name('update');
+        Route::delete('delete/{role}', [RoleController::class, 'delete'])->name('delete');
+
+    });
+
 });
 
 
@@ -77,14 +52,6 @@ Route::get('/products', function () {
 Route::get('/stores', function () {
     return view('stores.view');
 })->name('stores.view');
-
-// Route::get('/users', function () {
-//     return view('users.show_user');
-// })->name('users.show_user');
-
-// Route::get('/roles', function () {
-//     return view('roles.index');
-// })->name('roles.index');
 
 Route::get('/add-product', function () {
     return view('products.add');

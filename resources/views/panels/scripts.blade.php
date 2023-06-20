@@ -34,7 +34,10 @@
 <!-- Page JS -->
 <script src="{{asset('assets/js/dashboards-analytics.js')}}"></script>
 
+<script src="{{asset('js/adminAssets/active-link-menu-in-sidebar.js')}}"></script>
+
 <script src="{{asset('js/shared.js')}}"></script>
+
 @stack('scripts')
 <script src="{{asset('assets/vendor/libs/select2/select2.js')}}"></script>
 <script src="{{asset('js/jquery.validate.js')}}"></script>

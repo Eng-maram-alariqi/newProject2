@@ -3,31 +3,27 @@
 @push('styles')
     <link rel="stylesheet"
           type="text/css"
-          href="{{asset('adminAssets/src/bootstrap/css/bootstrap.min.css')}}"/>
-
-    <link rel="stylesheet"
-          type="text/css"
           href="{{ asset('adminAssets/src/plugins/src/table/datatable/datatables.css') }}">
 
     <link rel="stylesheet"
           type="text/css"
           href="{{asset('adminAssets/src/plugins/css/light/table/datatable/custom_dt_miscellaneous.css')}}">
-
 @endpush
 
 
 @section('content')
     <div class="container-fluid">
+
         <div class="row layout-spacing my-4">
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header d-flex justify-content-between align-items-center ">
                         <h3 class="text-capitalize text-dark">
-                            الادوار
+                            المستخدمين
                         </h3>
-                        @if( auth()->user()->can('انشاء-الادوار') )
+                        @if( auth()->user()->can('انشاء-المستخدمين') )
 
-                            <a href="{{route('roles.create')}}" class="icon text-dark">
+                            <a href="{{route('users.create')}}" class="icon text-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"
                                      fill="none"
                                      stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -51,7 +47,8 @@
 
         </div>
     </div>
-    <div class="content-backdrop fade"></div>
+
+    {{--    <div class="content-backdrop fade"></div>--}}
 @endsection
 
 @push('scripts')

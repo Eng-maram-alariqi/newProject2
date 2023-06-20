@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 // use App\invoices;
+use Illuminate\Contracts\Support\Renderable;
+
 class HomeController extends Controller
 {
     /**
@@ -19,15 +20,12 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {
 
-//=================احصائية نسبة تنفيذ الحالات======================
+        return view('dashboard.view');
 
-return view('home');
-
-
-}
+    }
 }

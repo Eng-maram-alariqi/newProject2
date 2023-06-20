@@ -2,8 +2,8 @@
 
 namespace app\DataTables;
 
+use App\Models\User;
 use App\Traits\DatatableTrait;
-use App\Models\Role;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Exceptions\Exception;
@@ -21,8 +21,13 @@ class UserDataTable extends DataTable
     public function dataTable(QueryBuilder $query)
     {
         return (new EloquentDataTable($query))
+            ->editColumn('roles', function ($query) {
+                return view('user.datatable.roles', [
+                    'roles' => $query->roles,
+                ]);
+            })
             ->addColumn('actions', function ($query) {
-                return view('roles.role.datatable.actions', [
+                return view('user.datatable.actions', [
                     'query' => $query
                 ]);
             })
@@ -30,9 +35,12 @@ class UserDataTable extends DataTable
     }
 
 
-    public function query(Role $model): QueryBuilder
+    public function query(User $model): QueryBuilder
     {
-        return $model->select(['id', 'name', 'guard_name']);
+        return $model->select(['id', 'username', 'email', 'phone_number', 'status'])
+            ->with(['roles' => function ($query) {
+                return $query->select('id', 'name');
+            }]);
     }
 
 
@@ -43,7 +51,7 @@ class UserDataTable extends DataTable
         $hideButtonsArray = $this->makeHideButtons($hideButtonsArray);
         return $this->builder()
             ->columns($this->getColumns())
-            ->minifiedAjax(route('roles.index'))
+            ->minifiedAjax(route('users.index'))
             ->dom('Bfrtip')
             ->parameters([
                 'scrollX' => false,
@@ -65,8 +73,11 @@ class UserDataTable extends DataTable
         return
             [
                 ['name' => 'id', 'data' => 'id', 'title' => 'ID'],
-                ['name' => 'name', 'data' => 'name', 'title' => 'Name'],
-                ['name' => 'guard_name', 'data' => 'guard_name', 'title' => 'Guard Name'],
+                ['name' => 'username', 'data' => 'username', 'title' => 'User Name'],
+                ['name' => 'email', 'data' => 'email', 'title' => 'Email'],
+                ['name' => 'phone_number', 'data' => 'phone_number', 'title' => 'Phone'],
+                ['name' => 'status', 'data' => 'status', 'title' => 'Status'],
+                ['name' => 'roles.name', 'data' => 'roles', 'title' => 'role'],
                 ['name' => 'actions', 'data' => 'actions', 'title' => 'Actions', 'exportable' => false, 'printable' => false, 'orderable' => false, 'searchable' => false],
             ];
     }
@@ -74,6 +85,6 @@ class UserDataTable extends DataTable
 
     protected function filename(): string
     {
-        return 'Role_' . date('YmdHis');
+        return 'User_' . date('YmdHis');
     }
 }

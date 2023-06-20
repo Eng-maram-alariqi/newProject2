@@ -1,9 +1,9 @@
 <?php
 
-namespace app\DataTables;
+namespace App\DataTables;
 
-use App\Traits\DatatableTrait;
 use App\Models\Role;
+use App\Traits\DatatableTrait;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Exceptions\Exception;
